@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protect Access</title>
+    <style>
+        
+    body {
+        font-family: Arial, sans-serif;
+        background: #ffffff;
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+    }
+
+    form {
+        border: 2px solid #333;
+        padding: 20px;
+        background: #ffffff;
+        width: 500px;
+    }
+
+    fieldset {
+        border: none;
+    }
+
+    /* Style all inputs */
+    input[type="text"] {
+        width: 65%;
+        padding: 8px;
+        margin-bottom: 10px;
+        background: #4a6fb3;
+        border: none;
+        border-radius: 5px;
+        color: white;
+    }
+
+    label{
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        background: #7b95ca;
+        color: white;
+        padding: 6px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    /* Submit button */
+    input[type="submit"] {
+        background: #4a6fb3;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+
+        display: block;
+        margin-left: auto;
+        margin-top: 10px;
+    }
+
+    input[type="submit"]:hover {
+        background: #3d5c99;
+    }
+
+    </style>
+</head>
+<body>
+    <form action="/protectaccess" method="post">
+        <fieldset>
+            <label>Name</label>
+            <input type="text" name="name" />
+            <br>
+            <label>Password</label>
+            <input type="text" name="pw" />
+            <br />
+            <label>ID Number</label>
+            <input type="text" name="IDnumber" />
+            <br />
+            <input type="submit" />
+        </fieldset>
+    </form>
+</body>
+</html>
