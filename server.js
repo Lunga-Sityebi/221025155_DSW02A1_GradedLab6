@@ -41,8 +41,8 @@ const server = http.createServer((req, res) => {
 
             const isValid = nameValid && passwordValid && idValid;
 
-
             const cleanID = id.replace(/[-/:.]/g, "");
+            
             const hiddenPassword = "*".repeat(password.length);
 
             const resultText = `${name}, ${hiddenPassword}, ${cleanID}`;
@@ -63,7 +63,6 @@ const server = http.createServer((req, res) => {
             res.end();
         });
     }
-
 })
 
 
