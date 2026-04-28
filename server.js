@@ -42,7 +42,7 @@ const server = http.createServer((req, res) => {
             const isValid = nameValid && passwordValid && idValid;
 
             const cleanID = id.replace(/[-/:.]/g, "");
-            
+
             const hiddenPassword = "*".repeat(password.length);
 
             const resultText = `${name}, ${hiddenPassword}, ${cleanID}`;
@@ -50,17 +50,27 @@ const server = http.createServer((req, res) => {
             fs.writeFileSync("accessresults.txt", resultText);
 
             // output
-            res.writeHead(200, { "Content-Type": "text/html" });
+            fs.readFile("accessresults.txt", "utf8", (err, resultFile) => {
 
-            if (isValid) {
-                res.write("<h1 style='color:green;'>Successful</h1>");
-            } else {
-                res.write("<h1 style='color:red;'>Access Denied Invalid Data</h1>");
-            }
+                fs.readFile("protectaccess.html", "utf8", (err2, htmlFile) => {
 
-            res.write(`<p>${resultText}</p>`);
+                    res.writeHead(200, { "Content-Type": "text/html" });
 
-            res.end();
+                    res.write(htmlFile);
+
+                    // STATUS MESSAGE
+                    if (isValid) {
+                        res.write("<h1 style='color:green;'>Successful.</h1><br>");
+                    } else {
+                        res.write("<h1 style='color:red;'>Access Denied! Invalid Data.</h1><br>");
+                    }
+
+                    // SUBMITTED DATA
+                    res.write(`<p>${resultText}</p>`);
+
+                    res.end();
+                });
+            });
         });
     }
 })
