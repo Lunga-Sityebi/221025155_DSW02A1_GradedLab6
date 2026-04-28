@@ -45,6 +45,7 @@ const server = http.createServer((req, res) => {
 
             const hiddenPassword = "*".repeat(password.length);
 
+
             const resultText = `${name}, ${hiddenPassword}, ${cleanID}`;
 
             fs.writeFileSync("accessresults.txt", resultText);
@@ -74,6 +75,7 @@ const server = http.createServer((req, res) => {
         });
     }
 })
+
 
 
 server.listen(PORT, 'localhost', () => {
